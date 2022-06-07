@@ -13,8 +13,16 @@ export default function PrivateRoutes() {
 
   return (
     <Fragment>
-      <PrivateRouter path="/dashboard" element={<Dashboard />} />
-      <PrivateRouter path="/profile" element={<Profile />} />
+      <PrivateRouter
+        path="/dashboard"
+        element={<Dashboard />}
+        config={{ userRole: "ADMINn" }}
+      />
+      <PrivateRouter
+        path="/profile"
+        element={<Profile />}
+        config={{ userRole: "DEVELOPER" }}
+      />
     </Fragment>
   );
 }

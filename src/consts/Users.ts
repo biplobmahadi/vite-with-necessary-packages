@@ -1,6 +1,7 @@
-export const User = {
-  admin: "ADMIN",
-  developer: "DEVELOPER",
+export const Users = {
+  Admin: "ADMIN",
+  Editor: "EDITOR",
+  User: "USER",
 };
 
-export const userRole = ["ADMIN", "DEVELOPER"];
+export const userRoles = ["ADMIN", "EDITOR", "USER"];
