@@ -1,15 +1,15 @@
 import { Fragment } from "react";
 import { Route, Routes } from "react-router-dom";
-import About from "../../components/About";
-import Contact from "../../components/Contact";
-import Dashboard from "../../components/Dashboard";
-import Editor from "../../components/Editor";
-import Home from "../../components/Home";
-import Login from "../../components/Login";
-import NotFound from "../../components/NotFound";
-import Profile from "../../components/Profile";
-import { Users } from "../../consts/Users";
-import AppPaths from "../../paths/AppPaths";
+import About from "../components/About";
+import Contact from "../components/Contact";
+import Dashboard from "../components/Dashboard";
+import Editor from "../components/Editor";
+import Home from "../components/Home";
+import Login from "../components/Login";
+import NotFound from "../components/NotFound";
+import Profile from "../components/Profile";
+import { Users } from "../consts/Users";
+import AppPaths from "../paths/AppPaths";
 import Private from "./Private";
 
 export default function AppRoutes() {
