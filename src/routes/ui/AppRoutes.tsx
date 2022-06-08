@@ -8,9 +8,9 @@ import Home from "../../components/Home";
 import Login from "../../components/Login";
 import NotFound from "../../components/NotFound";
 import Profile from "../../components/Profile";
+import { Users } from "../../consts/Users";
 import AppPaths from "../../paths/AppPaths";
-import PrivateRoutes from "./PrivateRoutes";
-import PublicRoutes from "./PublicRoutes";
+import Private from "./Private";
 
 export default function AppRoutes() {
   return (
@@ -21,13 +21,19 @@ export default function AppRoutes() {
         <Route path={AppPaths.Contact} element={<Contact />} />
         <Route path={AppPaths.Login} element={<Login />} />
         <Route path={AppPaths.NotFound} element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
+        <Route element={<Private allowedRoles={[Users.Admin]} />}>
+          <Route path={AppPaths.Dashboard} element={<Dashboard />} />
+        </Route>
 
-        <Route path={AppPaths.Dashboard} element={<Dashboard />} />
-        <Route path={AppPaths.Editor} element={<Editor />} />
-        <Route path={AppPaths.Profile} element={<Profile />} />
+        <Route element={<Private allowedRoles={[Users.Editor]} />}>
+          <Route path={AppPaths.Editor} element={<Editor />} />
+        </Route>
+
+        <Route element={<Private allowedRoles={[Users.User]} />}>
+          <Route path={AppPaths.Profile} element={<Profile />} />
+        </Route>
       </Routes>
-      {/* <PublicRoutes /> */}
-      {/* <PrivateRoutes /> */}
     </Fragment>
   );
 }

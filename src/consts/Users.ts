@@ -4,4 +4,4 @@ export const Users = {
   User: "USER",
 };
 
-export const userRoles = ["ADMIN", "EDITOR", "USER"];
+export const userRoles = ["USER", "EDITOR"];
