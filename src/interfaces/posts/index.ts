@@ -4,3 +4,9 @@ export interface ISinglePost {
   title: string;
   body: string;
 }
+
+export interface IPostPayload {
+  userId: number;
+  title: string;
+  body: string;
+}

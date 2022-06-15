@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Others from "./components/Others";
 import Posts from "./components/Posts";
 import Practice from "./components/Practice";
 
@@ -10,9 +11,8 @@ function App() {
       <button type="button" onClick={() => setCount((count) => count + 1)}>
         count is: {count}
       </button>{" "}
-      {count === 1 ? <Posts /> : null}
-      {/* <Posts />
-      <RenderHoi /> */}
+      {count === 1 ? <Others /> : null}
+      {/* <Posts /> */}
     </div>
   );
 }

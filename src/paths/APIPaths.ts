@@ -1,7 +1,7 @@
 const APIPaths = {
   Post: {
-    GetAll: "/posts",
-    GetPostById: (id: number) => `/posts/${id}`,
+    All: "/posts",
+    ById: (id: number) => `/posts/${id}`,
   },
 };
 export default APIPaths;
