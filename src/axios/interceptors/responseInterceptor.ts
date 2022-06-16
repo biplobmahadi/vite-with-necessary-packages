@@ -8,6 +8,7 @@ export default function responseInterceptor(instance: AxiosInstance) {
     (response: AxiosResponse) => response,
     async (error: AxiosError) => {
       const { config, response } = error;
+
       if (response?.status === 404) {
         const newAccessToken = await refresh();
         if (newAccessToken && config.headers) {

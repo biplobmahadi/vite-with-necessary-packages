@@ -4,7 +4,9 @@ import usePublicAxios from "./usePublicAxios";
 export default function useRefreshToken() {
   const { publicGet } = usePublicAxios();
   const refresh = async () => {
-    const response = await publicGet(APIPaths.Auth.Refresh);
+    const response = await publicGet(APIPaths.Auth.Refresh, {
+      activateAbort: false,
+    });
 
     localStorage.setItem("access-token", "new-access-token");
     return response;
