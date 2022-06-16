@@ -1,6 +1,6 @@
 import { AxiosError, AxiosRequestConfig } from "axios";
 import { useEffect, useState } from "react";
-import axiosInstance from "../../instance";
+import { axiosPublicInstance } from "../instances";
 
 export const getData = <R>(
   url: string,
@@ -10,7 +10,7 @@ export const getData = <R>(
 
   const fetchData = async (controller: AbortController) => {
     try {
-      const response = await axiosInstance.get<R>(url, {
+      const response = await axiosPublicInstance.get<R>(url, {
         ...config,
         signal: controller.signal,
       });
