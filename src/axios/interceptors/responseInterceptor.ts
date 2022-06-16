@@ -1,4 +1,5 @@
 import { AxiosError, AxiosInstance, AxiosResponse } from "axios";
+import { ICustomAxiosRequestConfig } from "../../interfaces/axios";
 import useRefreshToken from "../hooks/useRefreshToken";
 
 export default function responseInterceptor(instance: AxiosInstance) {
@@ -8,13 +9,15 @@ export default function responseInterceptor(instance: AxiosInstance) {
     (response: AxiosResponse) => response,
     async (error: AxiosError) => {
       const { config, response } = error;
+      let prevRequest: ICustomAxiosRequestConfig = config;
 
-      if (response?.status === 404) {
+      if (response?.status === 404 && !prevRequest.sent) {
+        prevRequest.sent = true;
         const newAccessToken = await refresh();
-        if (newAccessToken && config.headers) {
-          config.headers.Authorization = `Bearer new-access-tokennnn`;
+        if (newAccessToken && prevRequest.headers) {
+          prevRequest.headers.Authorization = `Bearer new-access-tokennnn`;
         }
-        return instance(config);
+        return instance(prevRequest);
       }
       return Promise.reject(error);
     }
