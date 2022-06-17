@@ -1,6 +1,6 @@
 const APIPaths = {
   Post: {
-    All: "/postss",
+    All: "/posts",
     ById: (id: number) => `/posts/${id}`,
   },
   Auth: {

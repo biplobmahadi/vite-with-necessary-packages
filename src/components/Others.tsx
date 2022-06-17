@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import useAxiosPrivate from "../axios/hooks/usePrivateAxios";
 import useRefreshToken from "../axios/hooks/useRefreshToken";
+import useGetPosts from "../controllers/post/useGetPosts";
 import { IPostPayload, ISinglePost } from "../interfaces/posts";
 import APIPaths from "../paths/APIPaths";
 
@@ -8,6 +9,8 @@ export default function Others() {
   const { privateDelete, privateGet, privatePost, privatePut } =
     useAxiosPrivate();
 
+  const { data, loading } = useGetPosts();
+  console.log("posts all in others", data, loading);
   const handlePost1 = async () => {
     const res = await privatePost<IPostPayload, ISinglePost>(
       APIPaths.Post.All,
@@ -15,7 +18,8 @@ export default function Others() {
         userId: 12,
         title: "hi tfhere",
         body: "kiref",
-      }
+      },
+      { activateAbort: false }
     );
     console.log("res1,", res);
   };
@@ -36,9 +40,7 @@ export default function Others() {
   };
 
   const handleGetRequest = async () => {
-    const res = await privateGet<ISinglePost[]>(APIPaths.Post.All, {
-      activateAbort: false,
-    });
+    const res = await privateGet<ISinglePost[]>(APIPaths.Post.All);
     console.log("get res", res);
   };
   // const [posts, setPosts] = useState<any>();
