@@ -4,7 +4,7 @@ import BaseModal from "./BaseModal";
 
 // in parent component which use this hook
 // if hook value change parent component will rerender
-// so use wisely
+// so use wisely - as minimal child render as possible
 
 const useModal = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
