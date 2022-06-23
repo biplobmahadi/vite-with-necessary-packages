@@ -6,60 +6,22 @@ abstract class LocalStorageBase {
     return `${this.appName}/${this.storageName}/${key}`;
   }
 
-  private setData(key: string, data: string | null): void {
+  protected setData<T>(key: string, data: T): void {
     const storedKey = this.storageKey(key);
     if (data) {
-      localStorage.setItem(storedKey, data);
+      const stringifiedData = JSON.stringify(data);
+      localStorage.setItem(storedKey, stringifiedData);
     } else {
       localStorage.removeItem(storedKey);
     }
   }
-  private getData(key: string): string | null {
+
+  protected getData<T>(key: string): T | null {
     const storedKey = this.storageKey(key);
-    const storedValue = localStorage.getItem(storedKey);
-    if (storedValue) {
-      return storedValue;
-    }
-    return null;
-  }
-
-  protected setString(key: string, value: string | null): void {
-    this.setData(key, value);
-  }
-  protected getString(key: string): string | null {
-    return this.getData(key);
-  }
-
-  protected setObject(key: string, value: object | null): void {
-    if (value) {
-      const stringifiedValue = JSON.stringify(value);
-      this.setData(key, stringifiedValue);
-    } else {
-      this.setData(key, null);
-    }
-  }
-  protected getObject(key: string): object | null {
-    const value = this.getData(key);
-    if (value) {
-      const parsedValue = JSON.parse(value);
-      return parsedValue;
-    }
-    return null;
-  }
-
-  protected setBoolean(key: string, value: boolean | null): void {
-    if (value) {
-      const stringifiedValue = JSON.stringify(value);
-      this.setData(key, stringifiedValue);
-    } else {
-      this.setData(key, null);
-    }
-  }
-  protected getBoolean(key: string): boolean | null {
-    const value = this.getData(key);
-    if (value) {
-      const parsedValue = JSON.parse(value);
-      return parsedValue;
+    const storedData = localStorage.getItem(storedKey);
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      return parsedData;
     }
     return null;
   }

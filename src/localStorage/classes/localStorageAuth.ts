@@ -8,16 +8,16 @@ class LocalStorageAuth extends LocalStorageBase implements ILocalStorageAuth {
   private readonly refreshTokenKey = "refreshToken";
 
   set accessToken(value: string | null) {
-    this.setString(this.accessTokenKey, value);
+    this.setData(this.accessTokenKey, value);
   }
   get accessToken(): string | null {
-    return this.getString(this.accessTokenKey);
+    return this.getData(this.accessTokenKey);
   }
   set refreshToken(value: string | null) {
-    this.setString(this.refreshTokenKey, value);
+    this.setData(this.refreshTokenKey, value);
   }
   get refreshToken(): string | null {
-    return this.getString(this.refreshTokenKey);
+    return this.getData(this.refreshTokenKey);
   }
 
   clearAuth() {
