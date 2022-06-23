@@ -1,11 +1,9 @@
+import { useRef } from "react";
 import useSWR from "swr";
+import usePost from "./usePost";
 
 const Page = () => {
-  const fetcher = (url: string) => fetch(url).then((r) => r.json());
-  const { data } = useSWR(
-    "https://jsonplaceholder.typicode.com/photos",
-    fetcher
-  );
+  const data = usePost();
   console.log(data, "data");
   return (
     <div>
