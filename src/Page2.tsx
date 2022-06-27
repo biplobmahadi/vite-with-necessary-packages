@@ -1,13 +1,9 @@
-import useSWR from "swr";
-import usePost from "./usePost";
+import { getPosts } from "./reactQuery/posts";
 
 const Page2 = () => {
-  const data = usePost();
-  console.log(data, "data");
+  const { data, isLoading, isError, error } = getPosts();
   return (
-    <div>
-      {data ? data?.map((el: any) => <li>{el.title}</li>) : "loading..."}
-    </div>
+    <div>{!isLoading ? <p>{JSON.stringify(data?.data)}</p> : "loading..."}</div>
   );
 };
 
