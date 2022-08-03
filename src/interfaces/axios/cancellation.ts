@@ -1,3 +1,3 @@
-export interface ICancellation {
+export interface IAbortOption {
   activateAbort: boolean;
 }

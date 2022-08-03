@@ -9,6 +9,7 @@ export default function usePrivateAxios() {
     getRequest: privateGet,
     postRequest: privatePost,
     putRequest: privatePut,
+    patchRequest: privatePatch,
     deleteRequest: privateDelete,
   } = axiosRequests(axiosPrivateInstance);
 
@@ -21,5 +22,5 @@ export default function usePrivateAxios() {
     };
   }, []);
 
-  return { privateGet, privatePost, privatePut, privateDelete };
+  return { privateGet, privatePost, privatePut, privatePatch, privateDelete };
 }

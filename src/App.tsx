@@ -10,9 +10,9 @@ function App() {
       <button type="button" onClick={() => setCount((count) => count + 1)}>
         count is: {count}
       </button>{" "}
-      {count === 1 ? <Posts /> : null}
-      {count === 2 ? <Others /> : null}
-      {/* <Others /> */}
+      {/* {count === 1 ? <Posts /> : null} */}
+      {/* {count === 2 ? <Others /> : null} */}
+      <Others />
     </div>
   );
 }

@@ -12,19 +12,19 @@ export default function Others() {
   const { data, loading } = useGetPosts();
   console.log("posts all in others", data, loading);
   const handlePost1 = async () => {
-    const res = await privatePost<IPostPayload, ISinglePost>(
+    const res = await privatePost<ISinglePost, IPostPayload>(
       APIPaths.Post.All,
       {
         userId: 12,
         title: "hi tfhere",
         body: "kiref",
-      },
-      { activateAbort: false }
+      }
+      // { activateAbort: false }
     );
     console.log("res1,", res);
   };
   const handlePut = async () => {
-    const res = await privatePut<IPostPayload, ISinglePost>(
+    const res = await privatePut<ISinglePost, IPostPayload>(
       APIPaths.Post.ById(1),
       {
         userId: 12,

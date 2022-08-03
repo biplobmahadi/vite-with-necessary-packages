@@ -6,8 +6,9 @@ export default function usePublicAxios() {
     getRequest: publicGet,
     postRequest: publicPost,
     putRequest: publicPut,
+    patchRequest: publicPatch,
     deleteRequest: publicDelete,
   } = axiosRequests(axiosPublicInstance);
 
-  return { publicGet, publicPost, publicPut, publicDelete };
+  return { publicGet, publicPost, publicPut, publicPatch, publicDelete };
 }

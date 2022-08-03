@@ -1,35 +1,42 @@
 import { AxiosInstance, AxiosRequestConfig } from "axios";
-import { ICancellation } from "../../interfaces/axios";
+import { IAbortOption } from "../../interfaces/axios";
 import request from "./request";
 
 const axiosRequests = (instance: AxiosInstance) => {
   return {
     getRequest: <R>(
       url: string,
-      cancellation?: ICancellation,
+      abortOption?: IAbortOption,
       config?: AxiosRequestConfig
     ): Promise<R | undefined> =>
-      request<R>(instance, "get", url, cancellation, config),
-    postRequest: <D, R>(
+      request<R>(instance, "get", url, abortOption, config),
+    postRequest: <R, D>(
       url: string,
       data?: D,
-      cancellation?: ICancellation,
+      abortOption?: IAbortOption,
       config?: AxiosRequestConfig
     ): Promise<R | undefined> =>
-      request<R, D>(instance, "post", url, cancellation, config, data),
-    putRequest: <D, R>(
+      request<R, D>(instance, "post", url, abortOption, config, data),
+    putRequest: <R, D>(
       url: string,
       data?: D,
-      cancellation?: ICancellation,
+      abortOption?: IAbortOption,
       config?: AxiosRequestConfig
     ): Promise<R | undefined> =>
-      request<R, D>(instance, "put", url, cancellation, config, data),
+      request<R, D>(instance, "put", url, abortOption, config, data),
+    patchRequest: <R, D>(
+      url: string,
+      data?: D,
+      abortOption?: IAbortOption,
+      config?: AxiosRequestConfig
+    ): Promise<R | undefined> =>
+      request<R, D>(instance, "patch", url, abortOption, config, data),
     deleteRequest: <R>(
       url: string,
-      cancellation?: ICancellation,
+      abortOption?: IAbortOption,
       config?: AxiosRequestConfig
     ): Promise<R | undefined> =>
-      request<R>(instance, "delete", url, cancellation, config),
+      request<R>(instance, "delete", url, abortOption, config),
   };
 };
 
