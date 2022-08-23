@@ -6,6 +6,5 @@ export const useCounterContext = () => {
   if (context === undefined) {
     throw new Error("useCounterContext must be used within a CounterProvider");
   }
-  const { count, increment, decrement, reset } = context;
-  return { count, increment, decrement, reset };
+  return context;
 };

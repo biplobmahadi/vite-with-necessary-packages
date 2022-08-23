@@ -11,11 +11,11 @@ export const CounterContext = createContext<ICounterContextValue | undefined>(
 
 const CounterContextProvider = ({ children }: IChildrenComponent) => {
   const [state, dispatch] = useReducer(counterReducer, initialState);
-  const { count } = state;
+  const { count, msg } = state;
   const { ...actions } = createActions(dispatch);
 
   return (
-    <CounterContext.Provider value={{ count, ...actions }}>
+    <CounterContext.Provider value={{ count, msg, ...actions }}>
       {children}
     </CounterContext.Provider>
   );
